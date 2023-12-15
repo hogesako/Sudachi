@@ -42,12 +42,13 @@ class LatticeImpl implements Lattice {
     LatticeImpl(Grammar grammar) {
         this.grammar = grammar;
 
-        eosParams = grammar.getEOSParameter();
+//        eosParams = grammar.getEOSParameter();
+        eosParams = null;
 
         endLists = new ArrayList<>();
         LatticeNodeImpl bosNode = new LatticeNodeImpl();
-        short[] bosParams = grammar.getBOSParameter();
-        bosNode.setParameter(bosParams[0], bosParams[1], bosParams[2]);
+//        short[] bosParams = grammar.getBOSParameter();
+//        bosNode.setParameter(bosParams[0], bosParams[1], bosParams[2]);
         bosNode.isConnectedToBOS = true;
         // endLists should not contain anything except ArrayLists
         // it is crucial to have monomorphic dispatch here
@@ -61,9 +62,10 @@ class LatticeImpl implements Lattice {
             expand(size);
         }
         this.size = size;
+        System.out.println("capacity:" + capacity + " actualSize:" + endLists.size());
 
         eosNode = new LatticeNodeImpl();
-        eosNode.setParameter(eosParams[0], eosParams[1], eosParams[2]);
+//        eosNode.setParameter(eosParams[0], eosParams[1], eosParams[2]);
         eosNode.begin = eosNode.end = size;
     }
 
